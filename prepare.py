@@ -1,6 +1,30 @@
 import pandas as pd
 from acquire import gen_telco
 
+def telco_support():
+    """
+        Acquires all tables from Codeup's telco_churn database,
+        Prepares the 'customers' table for stats tests on support options, then
+        Returns the prepared 'customers' table.
+    """
+
+    # Acquire data using gen_telco()
+    telco, t1, t2, t3 = gen_telco()
+
+    # Designate features for stats tests
+    telco = telco[['churn','online_security','online_backup','device_protection','tech_support']]
+    
+    # Create map (note: 0 and 1 encoding is intentional here)
+    map1 = {'No':0, 'Yes':1, 'No internet service':1}
+
+    # Encode
+    telco['churn'] = telco.churn.map(map1)
+    telco['online_security'] = telco.online_security.map(map1)
+    telco['online_backup'] = telco.online_backup.map(map1)
+    telco['device_protection'] = telco.device_protection.map(map1)
+    telco['tech_support'] = telco.tech_support.map(map1)
+
+    return telco
 
 def gen_prep_telco():
     """
@@ -44,8 +68,9 @@ def gen_prep_telco():
         telco_encoded[col] = telco_raw[col].map(fourth_map)
 
     # Stitch dataframe back together
-    telco = pd.concat([telco_encoded, 
-                       telco_raw[ordinal_cols], 
-                       telco_raw[numeric_cols]], axis=1)
+    telco = pd.concat([telco_raw['customer_id'],
+                        telco_encoded, 
+                        telco_raw[ordinal_cols], 
+                        telco_raw[numeric_cols]], axis=1)
 
     return telco, contract_types, internet_service_types, payment_types
