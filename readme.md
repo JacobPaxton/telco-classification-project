@@ -31,19 +31,23 @@ The Codeup Data Science Team is tasked with analyzing churn at Telco. This repos
 2. Construct a model to predict churn
 
 ## Initial Hypotheses:
-1. Customers without support options churn more than those with support
-2. Customers without a spouse or dependents churn more than those with a spouse or dependents
+1. Customers without Online Security option churn more than those having it
+2. Customers without Online Backup option churn more than those having it
+3. Customers without Device Protection option churn more than those having it
+4. Customers without Tech Support option churn more than those having it
 
 ## Key findings
-1. Customers without support options churn much more than those with support
-2. Customers without a spouse or dependents do churn more than those with spouse or dependents
+1. Customers without Online Security option do churn more than those having it
+2. Customers without Online Backup option do churn more than those having it
+3. Customers without Device Protection option do churn more than those having it
+4. Customers without Tech Support option do churn more than those having it
 
 ## Recommmendations
 1. Team should focus on analyzing the support options further
 2. Team should make churn projections involving increased support options
 
 ## Takeaways
-Increased support outreach to customers and retuning marketing approach to families should decrease churn.
+Increased support outreach to customers may decrease churn.
 
 ## Data Dictionary:
 |Target|Datatype|Definition|
